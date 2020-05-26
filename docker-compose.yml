@@ -1,0 +1,16 @@
+version: "2.3"
+services:
+  msu:
+    build: .
+    image: marvell_msu:1.0
+    restart: unless-stopped
+    volumes:
+      - /dev:/dev
+    ports:
+      - 8845:8845
+    device_cgroup_rules:
+      - 'c 21:* rmw'
+    environment:
+      MSU_ROOT_PASSWD: root
+
+
