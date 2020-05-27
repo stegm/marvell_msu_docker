@@ -7,7 +7,8 @@ RUN yum install -y \
 	unzip \
 	libxcrypt-compat \
 	libnsl \
-	procps
+	procps \
+	dash
 
 COPY Marvell_MSU_Linux_v4.1.0.2032.zip Marvell_MSU_Linux_v4.1.0.2032.zip
 
