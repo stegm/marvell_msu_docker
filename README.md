@@ -2,6 +2,9 @@
 
 Docker environment for running Marvell MSU Utility for RAID controllers on none rpm-based distros.
 
+Supports the following controllers:
+* Marvell Technology Group Ltd. 88SE9230 PCIe SATA 6Gb/s Controller (HPE ProLiant Microserver Gen10)
+
 ## Getting Started
 
 ## Prerequisites
