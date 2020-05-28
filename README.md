@@ -8,7 +8,7 @@ Docker environment for running Marvell MSU Utility for RAID controllers on none 
 
 * Docker
 * Docker Compose
-* [Marvell_MSU_Linux_v4.1.0.2032.zip](https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_3ce9cf24154740bba3095eecff) - place it in the same directory as the `Dockerfile`.
+* [Marvell Storage Utility for Linux 4.1.10.2042](https://support.lenovo.com/de/en/downloads/ds504249) - place it in the same directory as the `Dockerfile`.
 
 ## Installing
 
