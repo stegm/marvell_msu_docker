@@ -6,6 +6,19 @@ then
 	echo "root:$MSU_ROOT_PASSWD" | chpasswd
 fi
 
+# create config folders
+if [ ! -d /etc/marvell/cli ]
+then
+	mkdir /etc/marvell/cli
+	touch /etc/marvell/cli/mvcli.ini
+fi
+
+# create db.xml
+if [ ! -f /etc/marvell/db.xml ]
+then
+	cp /opt/marvell/storage/db/db.xml.orig /etc/marvell/db.xml
+fi
+
 if [ "$1" = "cli" ]
 then
 	shift

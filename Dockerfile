@@ -14,6 +14,10 @@ COPY mrvl_utl_msu_4.1.10.2042_linux_x86-64.tgz .
 RUN tar xzf mrvl_utl_msu_4.1.10.2042_linux_x86-64.tgz && \
 	yum install -y mrvl_utl_msu_4.1.10.2042_linux_x86-64/MSU-4.1.10.2042-1.x86_64.rpm
 
+# redirect config db.xml
+RUN mv /opt/marvell/storage/db/db.xml /opt/marvell/storage/db/db.xml.orig && \
+	ln -s /etc/marvell/db.xml /opt/marvell/storage/db/db.xml
+
 # redirect logs from raid controller
 RUN rm /opt/marvell/storage/db/mvraidsvc.log && \
 	ln -s /dev/stdout /opt/marvell/storage/db/mvraidsvc.log

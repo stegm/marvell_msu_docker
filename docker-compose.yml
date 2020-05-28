@@ -2,10 +2,11 @@ version: "2.3"
 services:
   msu:
     build: .
-    image: marvell_msu:1.0
+    image: marvell_msu:1.1
     restart: unless-stopped
     volumes:
       - /dev:/dev
+      - /srv/docker/marvell:/etc/marvell
     ports:
       - 8845:8845
     device_cgroup_rules:
