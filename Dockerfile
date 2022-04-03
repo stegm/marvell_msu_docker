@@ -8,6 +8,7 @@ RUN yum install -y \
 	libxcrypt-compat \
 	libnsl \
 	procps \
+	wget \
 	dash
 
 # https://support.lenovo.com/ca/en/downloads/ds539334-marvell-storage-utility-for-linux-for-linux
