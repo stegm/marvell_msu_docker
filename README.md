@@ -31,6 +31,8 @@ After the container is started you can access the web UI on port 8845. The defau
 Alternatively the CLI can be startet with
 
 ```sh
+docker-compose run --rm msu cli
+
 SG driver version 3.5.36.
 CLI Version: 4.1.10.42   RaidAPI Version: 2.3.10.1088
 Welcome to RAID Command Line Interface.
