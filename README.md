@@ -11,7 +11,16 @@ Supports the following controllers:
 
 * Docker
 * Docker Compose
-* [Marvell Storage Utility for Linux 4.1.10.2042](https://support.lenovo.com/de/en/downloads/ds504249) - place it in the same directory as the `Dockerfile`.
+
+Build will try to automatically download Marvell package from Lenovo, if you prefer to download it on your own, place the file from 
+[Marvell Storage Utility for Linux 4.1.10.2046](https://support.lenovo.com/ca/en/downloads/ds539334-marvell-storage-utility-for-linux-for-linux) 
+in the same directory as the `Dockerfile`. You also have to change the Dockerfile (see comments).
+
+Example: 
+
+```
+wget https://download.lenovo.com/servers/mig/2019/04/11/19912/mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz
+```
 
 ## Installing
 
@@ -27,7 +36,9 @@ Alternatively the CLI can be startet with
 
 ```sh
 docker-compose run --rm msu cli
-CLI Version: 4.1.0.30   RaidAPI Version: 5.0.0.1067
+
+SG driver version 3.5.36.
+CLI Version: 4.1.10.42   RaidAPI Version: 2.3.10.1088
 Welcome to RAID Command Line Interface.
 
 > info -o vd

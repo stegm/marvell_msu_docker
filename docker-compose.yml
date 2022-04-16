@@ -2,7 +2,7 @@ version: "2.3"
 services:
   msu:
     build: .
-    image: marvell_msu:1.1
+    image: marvell_msu:1.2
     restart: unless-stopped
     volumes:
       - /dev:/dev
