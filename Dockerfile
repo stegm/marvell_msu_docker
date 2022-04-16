@@ -1,22 +1,29 @@
-FROM fedora:31
+FROM alpine:3 AS download_package
 
-# unzip: used for unzipping downloaded packge
+# Online download of package
+RUN apk add --no-cache wget && \
+	wget --quiet https://download.lenovo.com/servers/mig/2019/04/11/19912/mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz 
+
+# Offline install of marvel package - download https://download.lenovo.com/servers/mig/2019/04/11/19912/mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz 
+# and place it in the Dockerfile directory
+#COPY mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz ./
+
+RUN tar xzf mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz
+
+	
+FROM fedora:31 AS final
+
 # libxcrypt-compat, libnsl: apache webserver for MSU
 # procps: install script
 RUN yum install -y \
-	unzip \
 	libxcrypt-compat \
 	libnsl \
 	procps \
-	wget \
 	dash
 
-# https://support.lenovo.com/ca/en/downloads/ds539334-marvell-storage-utility-for-linux-for-linux
-RUN wget https://download.lenovo.com/servers/mig/2019/04/11/19912/mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz
+COPY --from=download_package mrvl_utl_msu_4.1.10.2046_linux_x86-64/MSU-4.1.10.2046-1.x86_64.rpm ./
 
-COPY mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz .
-RUN tar xzf mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz && \
-    yum install -y mrvl_utl_msu_4.1.10.2046_linux_x86-64/MSU-4.1.10.2046-1.x86_64.rpm
+RUN yum install -y MSU-4.1.10.2046-1.x86_64.rpm
 
 # redirect config db.xml
 RUN mv /opt/marvell/storage/db/db.xml /opt/marvell/storage/db/db.xml.orig && \
