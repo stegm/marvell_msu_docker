@@ -11,7 +11,7 @@ RUN apk add --no-cache wget && \
 RUN tar xzf mrvl_utl_msu_4.1.10.2046_linux_x86-64.tgz
 
 	
-FROM fedora:31 AS final
+FROM fedora:35 AS final
 
 # libxcrypt-compat, libnsl: apache webserver for MSU
 # procps: install script
@@ -36,7 +36,6 @@ RUN rm /opt/marvell/storage/db/mvraidsvc.log && \
 # redirect apache logs
 RUN sed -ie 's:CustomLog "logs/access_log":CustomLog "/proc/self/fd/1":' /opt/marvell/storage/apache2/conf/httpd.conf && \
 	sed -ie 's:ErrorLog "logs/error_log":ErrorLog "/proc/self/fd/2":' /opt/marvell/storage/apache2/conf/httpd.conf
-	
 
 COPY scripts/startup.sh /startup.sh
 
