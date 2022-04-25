@@ -30,9 +30,9 @@ docker-compose build
 docker-compose up -d
 ```
 
-After the container is started you can access the web UI on port 8845. The default user and password is *root*.
+After the container is started you can access the web UI on port [8845](http://localhost:8845/). The default user and password is *root*.
 
-Alternatively the CLI can be startet with
+Alternatively the CLI can be started with
 
 ```sh
 docker-compose run --rm msu cli
